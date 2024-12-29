@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | default: "Athen Grill" }}</title>
+    <link rel="stylesheet" href="https://cdn.tailwindcss.com">
+    <link rel="stylesheet" href="/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Toggle Language Script
+        function toggleLanguage() {
+            const toggle = document.getElementById("language-toggle");
+            const menuLink = document.getElementById("menu-link");
+
+            if (toggle.checked) {
+                menuLink.href = "/de/menu";
+                menuLink.textContent = "View German Menu";
+            } else {
+                menuLink.href = "/en/menu";
+                menuLink.textContent = "View English Menu";
+            }
+        }
+
+        // Footer Year Script
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("current-year").textContent = new Date().getFullYear();
+        });
+    </script>
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+    {% include header.html %}
+    <main class="mt-6">
+        {{ content }}
+    </main>
+    <footer class="mt-12 bg-blue-900 text-white py-4 text-center">
+        © <span id="current-year"></span> Athen Grill. All Rights Reserved.
+    </footer>
+</body>
+
+</html>
