@@ -1,43 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title | default: "Athen Grill" }}</title>
-    <link rel="stylesheet" href="https://cdn.tailwindcss.com">
-    <link rel="stylesheet" href="/style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        // Toggle Language Script
-        function toggleLanguage() {
-            const toggle = document.getElementById("language-toggle");
-            const menuLink = document.getElementById("menu-link");
+{% include head.html %}
 
-            if (toggle.checked) {
-                menuLink.href = "/de/menu";
-                menuLink.textContent = "View German Menu";
-            } else {
-                menuLink.href = "/en/menu";
-                menuLink.textContent = "View English Menu";
-            }
-        }
+<body class="bg-gray-100  font-sans flex flex-col min-h-screen">
+    <header class="bg-blue-900 p-4 shadow-md">
+        <div class="max-w-7xl mx-auto text-center">
+            <!-- <img src="/assets/images/logo.svg" alt="Athen Grill Logo" class="h-12"> -->
+            <h1 class="text-2xl font-bold text-white font-center">ATHEN GRILL</h1>
+        </div>
+    </header>
 
-        // Footer Year Script
-        document.addEventListener("DOMContentLoaded", () => {
-            document.getElementById("current-year").textContent = new Date().getFullYear();
-        });
-    </script>
-</head>
-
-<body class="bg-gray-100 text-gray-800">
-    {% include header.html %}
-    <main class="mt-6">
+    <main class="flex-grow py-10">
         {{ content }}
     </main>
-    <footer class="mt-12 bg-blue-900 text-white py-4 text-center">
-        © <span id="current-year"></span> Athen Grill. All Rights Reserved.
+
+    <footer class="bg-blue-900 text-white py-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <p>&copy; <span id="current-year"></span> Athen Grill. All Rights Reserved.</p>
+        </div>
     </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
 </body>
 
 </html>
